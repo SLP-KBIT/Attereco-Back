@@ -1,6 +1,8 @@
 # Attereco-Back
 
 [![Circle CI](https://circleci.com/gh/SLP-KBIT/Attereco-Back.svg?style=shield)](https://circleci.com/gh/SLP-KBIT/Attereco-Back)
+[![Code Climate](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/gpa.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back)
+[![Test Coverage](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/coverage.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/coverage)
 
 ## About
 
