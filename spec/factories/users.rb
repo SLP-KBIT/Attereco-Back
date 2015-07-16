@@ -29,19 +29,14 @@
 #  updated_at             :datetime         not null
 #
 
-class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :lockable
-  has_many :cards
-
-  LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
-  POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze
-
-  def laboratory_text
-    LABORATORY[laboratory.to_i]
-  end
-
-  def position_text
-    POSITION[position.to_i]
+FactoryGirl.define do
+  factory :user do
+    email 'test@gmail.com'
+    password 'hogehoge'
+    sid 's99t000'
+    name 'hoge'
+    laboratory 0
+    position 0
+    phone '000-0000-0000'
   end
 end

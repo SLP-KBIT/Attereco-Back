@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-class Card < ActiveRecord::Base
-  belongs_to :user
+FactoryGirl.define do
+  factory :card do
+    idm 'testidm'
+  end
 end
