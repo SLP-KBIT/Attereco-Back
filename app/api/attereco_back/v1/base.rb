@@ -4,9 +4,13 @@ module AtterecoBack::V1
     format :json
 
     helpers do
+      def authenticate!
+        error! 'Unauthorized.', 401 unless params[:token] == ENV['API_TOKEN']
+      end
     end
 
     before do
+      authenticate!
     end
 
     mount Users
