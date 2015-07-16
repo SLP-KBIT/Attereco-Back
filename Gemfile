@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'slim-rails'
+
 gem 'rails'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
