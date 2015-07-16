@@ -12,13 +12,19 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
+gem 'devise-i18n'
+
 gem 'unicorn'
+# TODO
+# gem 'unicorn-worker-killer'
 
 gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape_logging'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'annotate'
 end
 
 group :test do
