@@ -13,6 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'capistrano-rails', group: :development
 
+gem 'grape', git: 'git@github.com:intridea/grape.git'
+gem 'grape_logging'
+
 group :development, :test do
   gem 'spring'
 end
