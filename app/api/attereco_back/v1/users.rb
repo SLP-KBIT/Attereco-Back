@@ -3,7 +3,7 @@ module AtterecoBack::V1
     resource :users do
       desc 'this is test api'
       get '' do
-        'response test'
+        { result: 'response test' }
       end
     end
   end
