@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'slim-rails'
+gem 'dotenv-rails'
 
 gem 'rails'
 gem 'pg'
