@@ -26,6 +26,7 @@ gem 'grape_logging'
 group :development do
   gem 'capistrano-rails'
   gem 'annotate'
+  gem 'bullet'
 end
 
 group :test do
