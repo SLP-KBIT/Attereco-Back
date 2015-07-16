@@ -13,10 +13,24 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
-gem 'capistrano-rails', group: :development
 
 gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape_logging'
+
+group :development do
+  gem 'capistrano-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'spring-commands-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'json_expressions'
+  gem 'rubocop'
+  gem 'codeclimate-test-reporter', require: nil
+end
 
 group :development, :test do
   gem 'spring'
