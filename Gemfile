@@ -17,8 +17,7 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'unicorn'
-# TODO
-# gem 'unicorn-worker-killer'
+gem 'unicorn-worker-killer'
 
 gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape_logging'
