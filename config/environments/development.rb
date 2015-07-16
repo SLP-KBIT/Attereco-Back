@@ -49,5 +49,6 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  BetterErrors::Middleware.allow_ip! ENV['ALLOW_IP']
+  # for windows or linux
+  # BetterErrors::Middleware.allow_ip! ENV['ALLOW_IP']
 end
