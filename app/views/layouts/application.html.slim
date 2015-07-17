@@ -21,6 +21,8 @@ html
         - if user_signed_in?
           ul.uk-navbar-nav.uk-hidden-small
             li = link_to 'Link1', '/link1'
+          - if current_user.is_admin?
+            li = link_to 'ユーザ管理', '/'
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav

@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     POSITION[position.to_i]
   end
 
+  def is_admin?
+    100 <= role
+  end
+
   def schema
     {
       email: email,
