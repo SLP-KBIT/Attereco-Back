@@ -25,6 +25,7 @@ gem 'grape_logging'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'capistrano-faster-assets'
   gem 'annotate'
   gem 'bullet'
   gem 'better_errors'
