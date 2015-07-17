@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
   has_many :cards
+  has_many :attends
+  has_many :schedules, through: :attends
 
   LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
   POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze

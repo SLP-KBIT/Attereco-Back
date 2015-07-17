@@ -15,6 +15,8 @@
 #
 
 class Schedule < ActiveRecord::Base
+  has_many :attends
+  has_many :users, through: :attends
   def self.schema
     ret = {}
     all.each do |schedule|
