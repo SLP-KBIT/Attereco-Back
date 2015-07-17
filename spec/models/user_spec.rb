@@ -17,13 +17,14 @@
 #  unlock_token           :string
 #  locked_at              :datetime
 #  sid                    :string           not null
-#  name                   :string           not null
-#  laboratory             :integer          not null
-#  position               :integer          not null
-#  phone                  :string           not null
+#  name                   :string           default(""), not null
+#  laboratory             :integer          default(0), not null
+#  position               :integer          default(0), not null
+#  phone                  :string           default(""), not null
 #  address                :string
 #  birthday               :datetime
 #  role                   :integer          default(0), not null
+#  status                 :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
