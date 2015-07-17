@@ -20,7 +20,7 @@ gem 'pry-rails'
 gem 'unicorn'
 gem 'unicorn-worker-killer'
 
-gem 'grape', git: 'git@github.com:intridea/grape.git'
+gem 'grape', git: 'https://github.com/intridea/grape.git'
 gem 'grape_logging'
 
 group :development do

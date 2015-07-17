@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:intridea/grape.git
+  remote: https://github.com/intridea/grape.git
   revision: 018941edee3797f377b2288f95d5da358167c00a
   specs:
     grape (0.12.1)
