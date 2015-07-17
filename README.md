@@ -1,5 +1,7 @@
 # Attereco-Back
 
+[![Join the chat at https://gitter.im/SLP-KBIT/Attereco-Back](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SLP-KBIT/Attereco-Back?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Circle CI](https://circleci.com/gh/SLP-KBIT/Attereco-Back.svg?style=shield)](https://circleci.com/gh/SLP-KBIT/Attereco-Back)
 [![Code Climate](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/gpa.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back)
 [![Test Coverage](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/coverage.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/coverage)
