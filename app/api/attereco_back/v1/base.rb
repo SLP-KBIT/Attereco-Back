@@ -14,5 +14,6 @@ module AtterecoBack::V1
     end
 
     mount Users
+    mount Schedules
   end
 end
