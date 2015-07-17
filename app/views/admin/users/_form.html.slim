@@ -26,9 +26,14 @@
       .uk-form-help-block#user-name-error
     .uk-form-row
       .uk-form-icon
-        i.uk-icon-font
+        i.uk-icon-phone
         = f.text_field :phone, placeholder: '電話番号', style: 'padding-left: 30px;'
       .uk-form-help-block#user-phone-error
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-home
+        = f.text_field :address, placeholder: '住所', style: 'padding-left: 30px;'
+      .uk-form-help-block#user-address-error
     .uk-form-row
       .uk-form-icon
         i.uk-icon-birthday-cake

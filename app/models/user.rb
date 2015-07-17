@@ -17,13 +17,14 @@
 #  unlock_token           :string
 #  locked_at              :datetime
 #  sid                    :string           not null
-#  name                   :string           not null
-#  laboratory             :integer          not null
-#  position               :integer          not null
-#  phone                  :string           not null
+#  name                   :string           default(""), not null
+#  laboratory             :integer          default(0), not null
+#  position               :integer          default(0), not null
+#  phone                  :string           default(""), not null
 #  address                :string
 #  birthday               :datetime
 #  role                   :integer          default(0), not null
+#  status                 :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -36,6 +37,7 @@ class User < ActiveRecord::Base
   has_many :schedules, through: :attends
 
   before_save :update_sid!
+  before_save :check_status!
 
   LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
   POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze
@@ -58,8 +60,41 @@ class User < ActiveRecord::Base
     100 <= role
   end
 
+  def is_verified?
+    100 <= status
+  end
+
   def update_sid!
-    self.sid = email.split('@').first
+    self.sid = email.split('@').first if email && email.present?
+  end
+
+  def check_status!
+    flag = true
+    skip_columns = %w(
+      id
+      encrypted_password
+      reset_password_token
+      reset_password_sent_at
+      remember_created_at
+      sign_in_count
+      current_sign_in_at
+      last_sign_in_at
+      current_sign_in_ip
+      last_sign_in_ip
+      failed_attempts
+      unlock_token
+      locked_at
+      role
+      status
+      created_at
+      updated_at
+    )
+    self.class.columns.each do |col|
+      target = col.name
+      next if skip_columns.include?(target)
+      flag = false unless try(target).present?
+    end
+    self.status = flag ? 100 : 0
   end
 
   def schema
@@ -80,5 +115,9 @@ class User < ActiveRecord::Base
 
     clean_up_passwords
     update_attributes(params, *options)
+  end
+
+  def email_required?
+    false
   end
 end
