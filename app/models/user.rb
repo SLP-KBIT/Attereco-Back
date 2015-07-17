@@ -30,7 +30,7 @@
 #
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, password_length: 7..72
 
   has_many :cards
   has_many :attends
