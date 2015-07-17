@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_many :attends
   has_many :schedules, through: :attends
 
+  before_save :update_sid
+
   LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
   POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze
 
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
 
   def is_admin?
     100 <= role
+  end
+
+  def update_sid
+    self.sid = email.split('@').first
   end
 
   def schema
