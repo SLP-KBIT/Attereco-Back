@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'devise-i18n'
 gem 'pry-rails'
+gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
 
 gem 'unicorn'
 gem 'unicorn-worker-killer'

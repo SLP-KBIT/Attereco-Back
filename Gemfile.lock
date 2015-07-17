@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/8398a7/uikit-sass-rails
+  revision: cf5607b0c7081fe5a2754577dc976fd40cbb5474
+  specs:
+    uikit-sass-rails (1.4.1)
+      sass-rails (>= 3.1)
+
+GIT
   remote: https://github.com/intridea/grape.git
   revision: 018941edee3797f377b2288f95d5da358167c00a
   specs:
@@ -345,6 +352,7 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
+  uikit-sass-rails!
   unicorn
   unicorn-worker-killer
 
