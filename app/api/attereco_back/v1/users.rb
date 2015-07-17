@@ -9,14 +9,7 @@ module AtterecoBack::V1
       get '' do
         user = Card.find_by(idm: params[:idm]).try(:user)
         return error! 'Not Found', 404 unless user
-        {
-          email: user.email,
-          name: user.name,
-          sid: user.sid,
-          laboratory: user.laboratory_text,
-          position: user.position_text,
-          phone: user.phone
-        }
+        user.schema
       end
 
       desc 'attend schedule'

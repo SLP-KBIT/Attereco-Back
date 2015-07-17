@@ -46,4 +46,15 @@ class User < ActiveRecord::Base
   def position_text
     POSITION[position.to_i]
   end
+
+  def schema
+    {
+      email: email,
+      name: name,
+      sid: sid,
+      laboratory: laboratory_text,
+      position: position_text,
+      phone: phone
+    }
+  end
 end
