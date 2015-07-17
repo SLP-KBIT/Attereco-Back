@@ -33,6 +33,18 @@ module AtterecoBack::V1
           message: schedule.caption
         }
       end
+
+      desc 'provisional registration'
+      params do
+        requires :idm, type: String, desc: "card's idm"
+        requires :sid, type: String, desc: "user's sid"
+        requires :token, type: String, desc: 'api token'
+      end
+      post 'create' do
+        user = User.create(sid: params[:sid], password: params[:sid].reverse)
+        Card.create(idm: params[:idm], user_id: user.id)
+        { result: :success }
+      end
     end
   end
 end

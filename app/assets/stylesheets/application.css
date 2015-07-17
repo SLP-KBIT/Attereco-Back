@@ -13,5 +13,7 @@
  *= require_tree .
  *= require uikit
  *= require uikit/almost-flat
+ *= require font-awesome
+ *= require select2
  *= require_self
  */

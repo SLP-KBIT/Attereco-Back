@@ -15,10 +15,8 @@ Documentation:
 # has_ から始まるメソッドは許可する
 Style/PredicateName:
   NamePrefixBlacklist:
-    - "is_"
     - "have_"
   NamePrefix:
-    - "is_"
     - "have_"
 
 AllCops:
