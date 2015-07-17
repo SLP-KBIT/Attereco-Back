@@ -17,6 +17,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'pry-rails'
 gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
+gem 'font-awesome-rails'
 
 gem 'unicorn'
 gem 'unicorn-worker-killer'
