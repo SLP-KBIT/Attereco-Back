@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717001606) do
+ActiveRecord::Schema.define(version: 20150717012631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,30 +50,29 @@ ActiveRecord::Schema.define(version: 20150717001606) do
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.integer  "failed_attempts",        default: 0,    null: false
+    t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "sid",                                   null: false
-    t.string   "name",                                  null: false
-    t.integer  "laboratory",                            null: false
-    t.integer  "position",                              null: false
-    t.string   "phone",                                 null: false
+    t.string   "sid",                                 null: false
+    t.string   "name",                                null: false
+    t.integer  "laboratory",                          null: false
+    t.integer  "position",                            null: false
+    t.string   "phone",                               null: false
     t.string   "address"
     t.datetime "birthday"
-    t.integer  "role",                   default: 0,    null: false
-    t.boolean  "is_active",              default: true, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "role",                   default: 0,  null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
