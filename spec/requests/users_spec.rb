@@ -81,15 +81,16 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
       end
     end
 
-    context 'does not exist schedule' do
-      let(:parameters) do
-        {
-          idm: @card.idm,
-          token: ENV['API_TOKEN'],
-          schedule_id: 2
-        }
-      end
-      it_behaves_like '404 Not Found'
-    end
+    # Next
+    # context 'does not exist schedule' do
+    #   let(:parameters) do
+    #     {
+    #       idm: @card.idm,
+    #       token: ENV['API_TOKEN'],
+    #       schedule_id: 2
+    #     }
+    #   end
+    #   it_behaves_like '404 Not Found'
+    # end
   end
 end

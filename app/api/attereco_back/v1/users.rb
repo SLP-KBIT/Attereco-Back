@@ -15,13 +15,16 @@ module AtterecoBack::V1
       desc 'attend schedule'
       params do
         requires :idm, type: String, desc: "card's idm"
-        requires :schedule_id, type: Integer, desc: 'specify schedule'
+        # Next version
+        # requires :schedule_id, type: Integer, desc: 'specify schedule'
         requires :token, type: String, desc: 'api token'
       end
       post ':idm/attend' do
         user = Card.find_by(idm: params[:idm]).try(:user)
         return error! 'Not Found', 404 unless user
-        schedule = Schedule.find_by(id: params[:schedule_id])
+        # Next version
+        # schedule = Schedule.find_by(id: params[:schedule_id])
+        schedule = Schedule.find_by(scheduled_date: Date.today)
         return error! 'Not Found', 404 unless schedule
         Attend.create(user_id: user.id, schedule_id: schedule.id)
         {
