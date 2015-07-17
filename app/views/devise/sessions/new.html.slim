@@ -10,7 +10,7 @@
 
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
       .uk-form-row.uk-form-icon
-        i.uk-icon-paper-plane
+        i.uk-icon-envelope
         = f.email_field :email, autofocus: true, placeholder: 'メールアドレス'
       .uk-form-row.uk-form-icon
         i.uk-icon-key

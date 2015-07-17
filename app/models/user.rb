@@ -35,10 +35,16 @@ class User < ActiveRecord::Base
   has_many :attends
   has_many :schedules, through: :attends
 
-  before_save :update_sid
+  before_save :update_sid!
 
   LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
   POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze
+
+  module Select
+    ROLE = [['管理者', 100], ['一般', 0]]
+    LABORATORY = LABORATORY.map.with_index { |labo, i| [labo, i] }
+    POSITION = POSITION.map.with_index { |pos, i| [pos, i] }
+  end
 
   def laboratory_text
     LABORATORY[laboratory.to_i]
@@ -52,7 +58,7 @@ class User < ActiveRecord::Base
     100 <= role
   end
 
-  def update_sid
+  def update_sid!
     self.sid = email.split('@').first
   end
 
@@ -65,5 +71,14 @@ class User < ActiveRecord::Base
       position: position_text,
       phone: phone
     }
+  end
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+    params.delete(:password) if params[:password].blank?
+    params.delete(:password_confirmation) if params[:password_confirmation].blank?
+
+    clean_up_passwords
+    update_attributes(params, *options)
   end
 end
