@@ -48,6 +48,7 @@ group :test do
   gem 'json_expressions'
   gem 'rubocop'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do

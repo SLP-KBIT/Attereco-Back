@@ -47,4 +47,18 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  context '関連のテスト' do
+    it 'UserはCardを複数持っている' do
+      is_expected.to have_many(:cards)
+    end
+
+    it 'Userは複数Attendを持っている' do
+      is_expected.to have_many(:attends)
+    end
+
+    it 'UserはAttendを通して複数Scheduleを持っている' do
+      is_expected.to have_many(:schedules).through(:attends)
+    end
+  end
 end
