@@ -13,8 +13,8 @@ RSpec.describe AtterecoBack::V1::Schedules, type: :request do
     end
     context 'exist schedules' do
       before do
-        create(:schedule, id: 1)
-        create(:schedule, caption: 'ハッカソン', id: 2)
+        create(:schedule, id: 1, scheduled_date: Date.today)
+        create(:schedule, caption: 'ハッカソン', id: 2, scheduled_date: Date.today)
       end
       let(:result) do
         {
