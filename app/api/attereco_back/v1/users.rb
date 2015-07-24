@@ -26,6 +26,7 @@ module AtterecoBack::V1
         # schedule = Schedule.find_by(id: params[:schedule_id])
         schedule = Schedule.find_by(scheduled_date: Date.today)
         return error! 'Not Found', 404 unless schedule
+        return error! 'Conflict', 409 if Attend.exists?(user_id: user.id, schedule_id: schedule.id)
         Attend.create(user_id: user.id, schedule_id: schedule.id)
         {
           sid: user.sid,
@@ -48,6 +49,7 @@ module AtterecoBack::V1
         # schedule = Schedule.find_by(id: params[:schedule_id])
         schedule = Schedule.find_by(scheduled_date: Date.today)
         return error! 'Not Found', 404 unless schedule
+        return error! 'Conflict', 409 if Attend.exists?(user_id: user.id, schedule_id: schedule.id)
         Attend.create(user_id: user.id, schedule_id: schedule.id)
         {
           sid: user.sid,
