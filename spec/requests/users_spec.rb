@@ -93,4 +93,34 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
     #   it_behaves_like '404 Not Found'
     # end
   end
+
+  describe 'POST /api/v1/users/:idm/attend_sid' do
+    before do
+      @user = create(:user, id: 1)
+      @schedule = create(:schedule, id: 1, scheduled_date: Date.today)
+    end
+    let(:url) { "/api/v1/users/#{@user.sid}/attend_sid" }
+    let(:method) { 'post' }
+    context 'exist schedule' do
+      let(:parameters) do
+        {
+          sid: @user.sid,
+          token: ENV['API_TOKEN'],
+          schedule_id: 1
+        }
+      end
+      let(:result) do
+        {
+          'sid' => @user.sid,
+          'name' => @user.name,
+          'message' => @schedule.caption
+        }
+      end
+      it_behaves_like '201 Created'
+      it 'created attend' do
+        post(url, parameters, rack_env)
+        expect(@user.schedules.first.id).to eq 1
+      end
+    end
+  end
 end
