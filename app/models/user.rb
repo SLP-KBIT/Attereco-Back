@@ -30,71 +30,46 @@
 #
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, password_length: 7..72
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable, password_length: 7..72
 
   has_many :cards
   has_many :attends
   has_many :schedules, through: :attends
 
-  before_save :update_sid!
-  before_save :check_status!
-
-  LABORATORY = %w(無所属 富永研 林研 八重樫研 垂水研 安藤研 最所研 その他).freeze
-  POSITION = %w(なし 会計 所長 副所長 会計 広報 物品 旅行 事務).freeze
-
   module Select
     ROLE = [['管理者', 100], ['一般', 0]]
-    LABORATORY = LABORATORY.map.with_index { |labo, i| [labo, i] }
-    POSITION = POSITION.map.with_index { |pos, i| [pos, i] }
   end
 
-  def laboratory_text
-    LABORATORY[laboratory.to_i]
+  def self.find_for_linkus(auth)
+    user = User.find_by(uid: auth.uid)
+    return update_linkus!(user, auth) if user
+
+    User.create(
+      name:     auth.info.name,
+      provider: auth.provider,
+      uid:      auth.uid,
+      sid:      auth.info.sid,
+      token:    auth.credentials.token,
+      password: Devise.friendly_token[0, 20],
+      raw: auth.to_json
+    )
   end
 
-  def position_text
-    POSITION[position.to_i]
+  def self.update_linkus!(user, auth)
+    user.update(
+      name:     auth.info.name,
+      provider: auth.provider,
+      uid:      auth.uid,
+      sid:      auth.info.sid,
+      token:    auth.credentials.token,
+      password: Devise.friendly_token[0, 20],
+      raw: auth.to_json
+    )
+    user
   end
 
   def is_admin?
     100 <= role
-  end
-
-  def is_verified?
-    100 <= status
-  end
-
-  def update_sid!
-    self.sid = email.split('@').first if email && email.present?
-  end
-
-  def check_status!
-    flag = true
-    skip_columns = %w(
-      id
-      encrypted_password
-      reset_password_token
-      reset_password_sent_at
-      remember_created_at
-      sign_in_count
-      current_sign_in_at
-      last_sign_in_at
-      current_sign_in_ip
-      last_sign_in_ip
-      failed_attempts
-      unlock_token
-      locked_at
-      role
-      status
-      created_at
-      updated_at
-    )
-    self.class.columns.each do |col|
-      target = col.name
-      next if skip_columns.include?(target)
-      flag = false unless try(target).present?
-    end
-    self.status = flag ? 100 : 0
   end
 
   def schema

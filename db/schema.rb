@@ -60,15 +60,13 @@ ActiveRecord::Schema.define(version: 20150717001606) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "provider",                            null: false
+    t.string   "uid",                                 null: false
     t.string   "sid",                                 null: false
     t.string   "name",                   default: "", null: false
-    t.integer  "laboratory",             default: 0,  null: false
-    t.integer  "position",               default: 0,  null: false
-    t.string   "phone",                  default: "", null: false
-    t.string   "address"
-    t.datetime "birthday"
     t.integer  "role",                   default: 0,  null: false
-    t.integer  "status",                 default: 0,  null: false
+    t.string   "token",                               null: false
+    t.text     "raw",                                 null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
