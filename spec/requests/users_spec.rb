@@ -51,13 +51,13 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
     end
   end
 
-  describe 'POST /api/v1/users/:idm/attend' do
+  describe 'POST /api/v1/users/:idm/attend_idm' do
     before do
       create(:user, id: 1)
       @card = create(:card, user_id: 1)
       @schedule = create(:schedule, id: 1, scheduled_date: Date.today)
     end
-    let(:url) { "/api/v1/users/#{@card.idm}/attend" }
+    let(:url) { "/api/v1/users/#{@card.idm}/attend_idm" }
     let(:method) { 'post' }
     context 'exist schedule' do
       let(:parameters) do

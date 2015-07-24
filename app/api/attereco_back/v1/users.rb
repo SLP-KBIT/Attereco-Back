@@ -12,6 +12,10 @@ module AtterecoBack::V1
         user.schema
       end
 
+      # TODO
+      # 学籍番号だけで出席できるバージョンも作る
+      # 登録されてない場合の処理も考えておく
+
       desc 'attend schedule'
       params do
         requires :idm, type: String, desc: "card's idm"
@@ -19,7 +23,7 @@ module AtterecoBack::V1
         # requires :schedule_id, type: Integer, desc: 'specify schedule'
         requires :token, type: String, desc: 'api token'
       end
-      post ':idm/attend' do
+      post ':idm/attend_idm' do
         user = Card.find_by(idm: params[:idm]).try(:user)
         return error! 'Not Found', 404 unless user
         # Next version
