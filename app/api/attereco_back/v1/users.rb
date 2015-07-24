@@ -19,7 +19,7 @@ module AtterecoBack::V1
         # requires :schedule_id, type: Integer, desc: 'specify schedule'
         requires :token, type: String, desc: 'api token'
       end
-      post ':idm/attend_sid' do
+      post ':sid/attend_sid' do
         user = User.find_by(sid: params[:sid])
         return error! 'Not Found', 404 unless user
         # Next version
