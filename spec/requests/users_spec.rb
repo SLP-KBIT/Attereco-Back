@@ -19,12 +19,8 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
       end
       let(:result) do
         {
-          email: @card.user.email,
           name: @card.user.name,
-          sid: @card.user.sid,
-          laboratory: @card.user.laboratory_text,
-          position: @card.user.position_text,
-          phone: @card.user.phone
+          sid: @card.user.sid
         }
       end
       it_behaves_like '200 Success'

@@ -16,15 +16,13 @@
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
+#  provider               :string           not null
+#  uid                    :string           not null
 #  sid                    :string           not null
 #  name                   :string           default(""), not null
-#  laboratory             :integer          default(0), not null
-#  position               :integer          default(0), not null
-#  phone                  :string           default(""), not null
-#  address                :string
-#  birthday               :datetime
 #  role                   :integer          default(0), not null
-#  status                 :integer          default(0), not null
+#  token                  :string           not null
+#  raw                    :text             not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -74,12 +72,8 @@ class User < ActiveRecord::Base
 
   def schema
     {
-      email: email,
       name: name,
-      sid: sid,
-      laboratory: laboratory_text,
-      position: position_text,
-      phone: phone
+      sid: sid
     }
   end
 
