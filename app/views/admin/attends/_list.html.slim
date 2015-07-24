@@ -1,0 +1,24 @@
+.uk-overflow-container
+  table.uk-table.uk-table-striped
+    thead
+      tr
+        th style="width: 150px;"
+          = link_to new_admin_attend_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true
+            = fa_icon 'plus', text: '作成'
+        th.bold style="width: 100px;" = sort_link(@search, 'attend.user.name', '参加者')
+        th.bold style="width: 100px;" = sort_link(@search, 'attend.schedule.name', 'スケジュール名')
+        th.bold style="width: 100px;" = sort_link(@search, :created_at, '出勤時間')
+    tbody
+      - attends.each do |attend|
+        - attend = attend.decorate
+        tr
+          td
+            = link_to edit_admin_attend_path(attend.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true
+              = fa_icon 'pencil', text: '編集'
+            = link_to admin_attend_path(attend.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
+              = fa_icon 'trash', text: '削除'
+          td #{attend.user.name}
+          td #{attend.schedule.caption}
+          td #{attend.created_at}
+coffee:
+  $('.select2').select2()

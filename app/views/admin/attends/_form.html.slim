@@ -1,0 +1,27 @@
+- unless attend
+  - attend = Attend.new
+  - title = '出席データの新規作成'
+  - submit = '作成'
+- else
+  - title = '出席データの更新'
+  - submit = '更新'
+
+.uk-modal-dialog style="padding-bottom: 0"
+  a.uk-modal-close.uk-close
+
+  = form_for [:admin, attend], html: { class: 'uk-form uk-form-stacked' }, remote: true do |f|
+    .uk-modal-header
+      h4.bold
+        = fa_icon 'inbox', text: title
+
+    .uk-form-row
+      = f.select :user_id, User.all.map { |u| [u.name, u.id] }, {}, { class: 'uk-width-1-1' }
+    .uk-form-row
+      = f.select :schedule_id, Schedule.all.map { |s| [s.caption, s.id] }, {}, { class: 'uk-width-1-1' }
+
+    .uk-modal-footer.uk-text-right
+      .uk-button-group
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: submit
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'

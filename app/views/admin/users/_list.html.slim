@@ -3,7 +3,7 @@
     thead
       tr
         th style="width: 150px;"
-          = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
+          = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true
             = fa_icon 'plus', text: '作成'
         th.bold style="width: 100px;" = sort_link(@search, :sid, '学籍番号')
         th.bold style="width: 50px;" = sort_link(@search, :role, '管理者')

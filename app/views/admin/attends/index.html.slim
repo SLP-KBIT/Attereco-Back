@@ -1,0 +1,17 @@
+- @title = '出席管理'
+
+h2.bold
+  = fa_stacked_icon 'inbox inverse', base: 'square', text: @title
+
+= search_form_for [:admin, @search], class: 'uk-form right' do |f|
+  = fa_icon 'search', text: 'イベント名から絞込'
+  .uk-form-row
+    = f.select :id_eq, Schedule.all.map { |s| [s.caption, s.id] }, {}, class: 'select2', style: 'width: 100px'
+    button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
+      = fa_icon 'search', text: '検索'
+hr
+= render partial: 'admin/attends/list', locals: { attends: @attends }
+= paginate @attends
+
+coffee:
+  $('#nav-admin').addClass('uk-active')

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       post :lock, on: :member
       post :unlock, on: :member
     end
+    resources :attends
   end
 end
