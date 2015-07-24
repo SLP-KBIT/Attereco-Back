@@ -81,6 +81,18 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
       end
     end
 
+    context 'already attend' do
+      before { create(:attend, user_id: 1, schedule_id: 1) }
+      let(:parameters) do
+        {
+          idm: @card.idm,
+          token: ENV['API_TOKEN'],
+          schedule_id: 1
+        }
+      end
+      it_behaves_like '409 Conflict'
+    end
+
     # Next
     # context 'does not exist schedule' do
     #   let(:parameters) do
@@ -121,6 +133,18 @@ RSpec.describe AtterecoBack::V1::Users, type: :request do
         post(url, parameters, rack_env)
         expect(@user.schedules.first.id).to eq 1
       end
+    end
+
+    context 'already attend' do
+      before { create(:attend, user_id: 1, schedule_id: 1) }
+      let(:parameters) do
+        {
+          sid: @user.sid,
+          token: ENV['API_TOKEN'],
+          schedule_id: 1
+        }
+      end
+      it_behaves_like '409 Conflict'
     end
   end
 end
