@@ -9,10 +9,4 @@ class ApplicationController < ActionController::Base
     return if current_user.is_admin?
     redirect_to root_path, alert: '管理者用ページです'
   end
-
-  def verified_user!
-    return if current_user.is_verified?
-    sign_out
-    redirect_to root_path
-  end
 end

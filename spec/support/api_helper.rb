@@ -78,6 +78,11 @@ module ApiHelper
     end
   end
 
+  shared_examples_for '409 Conflict' do
+    its(:status) { is_expected.to be(409) }
+    its(:body)   { is_expected.to match_json_expression(error: wildcard_matcher) }
+  end
+
   shared_examples_for '422 Unprocessable Entity' do
     describe '#status' do
       subject { super().status }

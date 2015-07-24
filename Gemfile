@@ -28,6 +28,8 @@ gem 'unicorn-worker-killer'
 
 gem 'grape', git: 'https://github.com/intridea/grape.git'
 gem 'grape_logging'
+gem 'omniauth'
+gem 'omniauth-linkus'
 
 group :development do
   gem 'capistrano-rails'
