@@ -33,6 +33,9 @@ html
                       li
                         = link_to admin_users_path
                           = fa_icon 'users', text: 'ユーザ管理'
+                      li
+                        = link_to admin_attends_path
+                          = fa_icon 'inbox', text: '出席管理'
               li.uk-parent data-uk-dropdown=""
                 a = fa_icon 'user', text: current_user.sid
                 .uk-dropdown.uk-dropdown-navbar
