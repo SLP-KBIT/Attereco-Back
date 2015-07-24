@@ -41,13 +41,10 @@ ActiveRecord::Schema.define(version: 20150717001606) do
     t.string   "place"
     t.string   "caption"
     t.date     "scheduled_date"
-    t.integer  "user_id"
     t.integer  "assigned_user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
-
-  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
