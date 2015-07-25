@@ -22,6 +22,7 @@ $ rails s
 
 - Ruby 2.2.2
 - Ruby on Rails 4.2.3
+- [linkus](https://github.com/SLP-KBIT/linkus)
 
 ## Usage
 
