@@ -39,10 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_linkus(auth)
-    user = User.find_by(uid: auth.uid)
-    return update_linkus!(user, auth) if user
-
-    User.create(
+    parameters = {
       name:     auth.info.name,
       provider: auth.provider,
       uid:      auth.uid,
@@ -50,19 +47,15 @@ class User < ActiveRecord::Base
       token:    auth.credentials.token,
       password: Devise.friendly_token[0, 20],
       raw: auth.to_json
-    )
+    }
+    user = User.find_by(uid: auth.uid)
+    return update_linkus!(user, parameters) if user
+
+    User.create(parameters)
   end
 
-  def self.update_linkus!(user, auth)
-    user.update(
-      name:     auth.info.name,
-      provider: auth.provider,
-      uid:      auth.uid,
-      sid:      auth.info.sid,
-      token:    auth.credentials.token,
-      password: Devise.friendly_token[0, 20],
-      raw: auth.to_json
-    )
+  def self.update_linkus!(user, parameters)
+    user.update(parameters)
     user
   end
 

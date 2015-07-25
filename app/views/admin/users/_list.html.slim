@@ -7,11 +7,7 @@
             = fa_icon 'plus', text: '作成'
         th.bold style="width: 100px;" = sort_link(@search, :sid, '学籍番号')
         th.bold style="width: 50px;" = sort_link(@search, :role, '管理者')
-        th.bold style="width: 50px;" = sort_link(@search, :status, '入力状態')
-        th.bold style="width: 150px;" = sort_link(@search, :email, 'メールアドレス')
         th.bold style="width: 150px;" = sort_link(@search, :name, '名前')
-        th.bold style="width: 50px;" = sort_link(@search, :laboratory, '研究室')
-        th.bold style="width: 100px;" = sort_link(@search, :position, '役職')
         th.bold style="width: 150px;" = sort_link(@search, :last_sign_in_at, '最終ログイン時間')
     tbody
       - users.each do |user|
@@ -31,11 +27,7 @@
 
           td #{user.sid}
           td.uk-text-center = fa_icon 'check' if user.is_admin?
-          td.uk-text-center = fa_icon 'check' if user.is_verified?
-          td #{user.email}
           td #{user.name}
-          td #{user.laboratory_text}
-          td #{user.position_text}
           td #{user.last_sign_in_at}
 coffee:
   $('.select2').select2()
