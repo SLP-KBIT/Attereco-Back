@@ -22,6 +22,8 @@ gem 'ransack'
 gem 'kaminari'
 gem 'draper'
 gem 'select2-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem 'unicorn'
 gem 'unicorn-worker-killer'

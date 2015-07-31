@@ -1,0 +1,12 @@
+- @title = 'スケジュール管理'
+
+h2.bold
+  = fa_stacked_icon 'calendar inverse', base: 'square', text: @title
+
+= link_to new_admin_schedule_path, class: 'uk-button uk-button-primary', remote: true do
+  = fa_icon 'plus-square', text: '予定登録'
+hr
+= render partial: 'admin/schedules/calendar', locals: { schedules: @schedules }
+
+coffee:
+  $('#nav-admin').addClass('uk-active')

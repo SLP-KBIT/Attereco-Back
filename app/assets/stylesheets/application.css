@@ -15,5 +15,7 @@
  *= require uikit/almost-flat
  *= require font-awesome
  *= require select2
+ *= require jquery.datetimepicker
+ *= require fullcalendar
  *= require_self
  */
