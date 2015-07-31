@@ -13,6 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require uikit
+//= require jquery.datetimepicker
 //= require select2
+//= require select2_locale_ja
+//= require moment
+//= require moment/ja
+//= require fullcalendar
 //= require turbolinks
 //= require_tree .

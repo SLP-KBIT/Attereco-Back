@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       post :unlock, on: :member
     end
     resources :attends
+    resources :schedules
   end
 end

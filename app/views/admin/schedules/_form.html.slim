@@ -1,0 +1,53 @@
+- unless schedule
+  - schedule = Schedule.new
+  - title = '予定の新規作成'
+  - submit = '作成'
+- else
+  - title = '予定の更新'
+  - submit = '更新'
+
+.uk-modal-dialog style="padding-bottom: 0"
+  a.uk-modal-close.uk-close
+
+  = form_for [:admin, schedule], html: { class: 'uk-form uk-form-stacked' }, remote: true do |f|
+    .uk-modal-header
+      h4.bold
+        = fa_icon 'calendar', text: title
+
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-at
+        = f.text_field :caption, placeholder: 'スケジュール名', style: 'padding-left: 30px;'
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-clock-o
+        = f.datetime_field :start_at, placeholder: '開始時間', style: 'width: 100%; padding-left: 30px;', readonly: true
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-clock-o
+        = f.datetime_field :end_at, placeholder: '終了時間', style: 'width: 100%; padding-left: 30px;', readonly: true
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-calendar-o
+        = f.text_field :scheduled_date, placeholder: '実施日', style: 'padding-left: 30px;', 'data-uk-datepicker' => "{format: 'YYYY/MM/DD'}", readonly: true
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-home
+        = f.text_field :place, placeholder: '場所 (ex. 1909演習室)', style: 'padding-left: 30px;'
+    .uk-form-row
+      = f.collection_select(:assigned_user_id, User.all, :id, :name, { prompt: '議事録担当者を選択' }, class: 'uk-width-1-1 searchable')
+
+    .uk-modal-footer.uk-text-right
+      .uk-button-group
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: submit
+        - if submit == '更新'
+          = link_to admin_schedule_path(schedule.id), method: :delete, remote: true
+            button.uk-button.uk-button-danger
+              = fa_icon 'trash', text: '削除'
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'
+coffee:
+  $('.searchable').select2()
+  $('.xdsoft_datetimepicker').remove()
+  $('input[type=datetime]').datetimepicker(lang: 'ja', format: 'Y/m/d H:i')

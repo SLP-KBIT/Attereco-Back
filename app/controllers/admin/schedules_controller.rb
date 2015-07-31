@@ -36,7 +36,7 @@ class Admin::SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(
-      :role
+      :caption, :start_at, :end_at, :scheduled_date, :place, :assigned_user_id
     )
   end
 
