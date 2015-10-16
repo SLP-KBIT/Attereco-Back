@@ -1,4 +1,4 @@
-app_path = '/home/rails/deploy/attereco'
+app_path = '/home/app/UnivWare/attereco'
 app_shared_path = "#{app_path}/shared"
 
 worker_processes 3
@@ -13,6 +13,10 @@ stderr_path "#{app_shared_path}/log/unicorn.stderr.log"
 pid "#{app_shared_path}/tmp/pids/unicorn.pid"
 
 preload_app true
+
+before_exec do
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+end
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
