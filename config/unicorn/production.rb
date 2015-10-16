@@ -1,4 +1,4 @@
-app_path = '/home/rails/deploy/attereco'
+app_path = '/home/app/UnivWare/attereco'
 app_shared_path = "#{app_path}/shared"
 
 worker_processes 3
