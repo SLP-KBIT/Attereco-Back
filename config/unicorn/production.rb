@@ -14,7 +14,7 @@ pid "#{app_shared_path}/tmp/pids/unicorn.pid"
 
 preload_app true
 
-before_exec do
+before_exec do |_|
   ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
 
