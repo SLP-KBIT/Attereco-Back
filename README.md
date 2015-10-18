@@ -6,6 +6,8 @@
 [![Code Climate](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/gpa.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back)
 [![Test Coverage](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/badges/coverage.svg)](https://codeclimate.com/github/SLP-KBIT/Attereco-Back/coverage)
 
+[API Document](http://docs.atterecoback.apiary.io/)
+
 ## About
 
 ## Installation
