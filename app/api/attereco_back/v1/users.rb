@@ -61,7 +61,7 @@ module AtterecoBack::V1
         requires :sid, type: String, desc: "user's sid"
       end
       post 'create' do
-        user = User.create(sid: params[:sid], password: params[:sid].reverse)
+        user = User.find_by(sid: params[:sid])
         Card.create(idm: params[:idm], user_id: user.id)
         { result: :success }
       end
