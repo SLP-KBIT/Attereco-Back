@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   mount AtterecoBack::API => '/api'
-  root 'dashboards#index'
+  root 'attends#index'
+  resources :attends, only: :index
 
   namespace :admin do
     resources :users do
