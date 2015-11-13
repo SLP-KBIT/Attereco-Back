@@ -30,8 +30,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :omniauthable, password_length: 7..72
 
-  has_many :cards
-  has_many :attends
+  has_many :cards, dependent: :delete_all
+  has_many :attends, dependent: :delete_all
   has_many :schedules, through: :attends
 
   module Select
